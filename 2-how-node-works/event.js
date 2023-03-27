@@ -21,6 +21,7 @@ myEmitter.on('newSale', stock => {
 })
 myEmitter.emit('newSale', 10)
 
+
 const server = http.createServer();
 server.on('request', (req, res) => {
     console.log('Request received');

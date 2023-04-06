@@ -26,8 +26,8 @@ app.get('/api/v1/tours', (req, res) => {
         data: {
             tours: tours
         }
-    })
-})
+    });
+});
 
 // specific tour 
 app.get('/api/v1/tours/:id', (req, res) => {
@@ -38,16 +38,16 @@ app.get('/api/v1/tours/:id', (req, res) => {
         res.status(404).json({
             status: 'Failed',
             message: ' Invalid Id'
-        })
-    }
+        });
+    };
 
     res.status(200).json({
         status: 'success',
         data: {
             tour
         }
-    })
-})
+    });
+});
 
 // post
 app.post('/api/v1/tours', (req, res) => {
@@ -60,9 +60,25 @@ app.post('/api/v1/tours', (req, res) => {
             data: {
                 tour: newTour
             }
-        })
+        });
     });
 });
+
+app.patch('/api/v1/tours/:id', (req, res) => {
+    if (req.params.id * 1 > tours.length) {
+        res.status(404).json({
+            status: 'Failed',
+            message: ' Invalid Id'
+        });
+    }
+
+    res.status(200).json({
+        status: "Success",
+        data: {
+            tour: "<Update tour here.....>"
+        }
+    })
+})
 console.log(tours)
 app.listen(port, () => {
     console.log(`App running on port ${port}`);

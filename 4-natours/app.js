@@ -63,8 +63,24 @@ app.post('/api/v1/tours', (req, res) => {
         });
     });
 });
-
+// Update
 app.patch('/api/v1/tours/:id', (req, res) => {
+    if (req.params.id * 1 > tours.length) {
+        res.status(404).json({
+            status: 'Failed',
+            message: ' Invalid Id'
+        });
+    };
+
+    res.status(200).json({
+        status: "Success",
+        data: {
+            tour: "<Update tour here.....>"
+        }
+    });
+});
+// delete
+app.delete('/api/v1/tours/:id', (req, res) => {
     if (req.params.id * 1 > tours.length) {
         res.status(404).json({
             status: 'Failed',
@@ -72,11 +88,9 @@ app.patch('/api/v1/tours/:id', (req, res) => {
         });
     }
 
-    res.status(200).json({
+    res.status(204).json({
         status: "Success",
-        data: {
-            tour: "<Update tour here.....>"
-        }
+        data: null
     })
 })
 console.log(tours)

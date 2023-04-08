@@ -3,7 +3,7 @@ const userRouter = require('./routes/userRoutes.js')
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const port = 5000;
+
 
 // middleware
 app.use(express.json());
@@ -24,6 +24,4 @@ app.use(morgan('dev'));
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter)
 
-app.listen(port, () => {
-    console.log(`App running on port ${port}`);
-});
+module.exports = app;

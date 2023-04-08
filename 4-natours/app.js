@@ -21,9 +21,8 @@ app.use((req, res, next) => {
 app.use(morgan('dev'));
 
 // Mounting Multiple ROuters
-
 app.use('/api/v1/tours', tourRouter);
-app.use('/api/v1/user', userRouter)
+app.use('/api/v1/users', userRouter)
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`);

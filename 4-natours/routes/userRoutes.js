@@ -1,13 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
+const userController = require('./../controllers/userController.js');
+const { getAllUser } = userController;
 
-const getAllUser = (req, res) => {
-    res.status(500).json({
-        status: "Not Found",
-        message: "User not found",
-    })
-};
 
 router
     .route('/')

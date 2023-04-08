@@ -93,7 +93,14 @@ const deleteTour = (req, res) => {
         status: "Success",
         data: null
     })
-}
+};
+
+const getAllUser = (req, res) => {
+    res.status(500).json({
+        status: "Not Found",
+        message: "User not found",
+    })
+};
 // get
 // app.get('/api/v1/tours', getAllTour);
 
@@ -110,14 +117,33 @@ const deleteTour = (req, res) => {
 // app.delete('/api/v1/tours/:id', deleteTour);
 
 
-app.route('/api/v1/tours')
+
+const tourRouter = express.Router();
+const userRouter = express.Router();
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/user', userRouter)
+
+tourRouter
+    .route('/')
     .get(getAllTour)
     .post(postTour);
 
-app.route('/api/v1/tours/:id')
+tourRouter
+    .route('/:id')
     .get(getTour)
     .patch(updateTour)
     .delete(deleteTour);
+
+// userRouter('/')
+//     .get(getAllUser)
+//     .post(postUser)
+
+// userRouter('/:id')
+//     .get(getUser)
+//     .patch(updateUser)
+//     .delete(deleteUser);
+
+
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
